@@ -14,9 +14,9 @@ import UIKit
 }
 
 @objc public class WDImagePicker: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate, WDImageCropControllerDelegate {
-    var delegate: WDImagePickerDelegate?
-    var cropSize: CGSize!
-    var resizableCropArea = false
+    public var delegate: WDImagePickerDelegate?
+    public var cropSize: CGSize!
+    public var resizableCropArea = false
 
     private var _imagePickerController: UIImagePickerController!
 
@@ -24,7 +24,7 @@ import UIKit
         return _imagePickerController
     }
     
-    override init() {
+    override public init() {
         super.init()
 
         self.cropSize = CGSizeMake(320, 320)
