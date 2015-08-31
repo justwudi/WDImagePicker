@@ -45,16 +45,18 @@ import UIKit
         }
     }
 
-    public func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
-        let cropController = WDImageCropViewController()
-        cropController.sourceImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        cropController.resizableCropArea = self.resizableCropArea
-        cropController.cropSize = self.cropSize
-        cropController.delegate = self
-        picker.pushViewController(cropController, animated: true)
+    public func imagePickerController(picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+            let cropController = WDImageCropViewController()
+            cropController.sourceImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+            cropController.resizableCropArea = self.resizableCropArea
+            cropController.cropSize = self.cropSize
+            cropController.delegate = self
+            picker.pushViewController(cropController, animated: true)
     }
 
-    func imageCropController(imageCropController: WDImageCropViewController, didFinishWithCroppedImage croppedImage: UIImage) {
-        self.delegate?.imagePicker?(self, pickedImage: croppedImage)
+    func imageCropController(imageCropController: WDImageCropViewController,
+        didFinishWithCroppedImage croppedImage: UIImage) {
+            self.delegate?.imagePicker?(self, pickedImage: croppedImage)
     }
 }

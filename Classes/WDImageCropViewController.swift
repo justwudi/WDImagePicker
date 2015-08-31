@@ -10,7 +10,8 @@ import UIKit
 import CoreGraphics
 
 internal protocol WDImageCropControllerDelegate {
-    func imageCropController(imageCropController: WDImageCropViewController, didFinishWithCroppedImage croppedImage: UIImage)
+    func imageCropController(imageCropController: WDImageCropViewController,
+        didFinishWithCroppedImage croppedImage: UIImage)
 }
 
 internal class WDImageCropViewController: UIViewController {
@@ -98,25 +99,6 @@ internal class WDImageCropViewController: UIViewController {
         self.useButton.addTarget(self, action: "actionUse:", forControlEvents: .TouchUpInside)
     }
 
-    private func toolbarBackgroundImage() -> UIImage {
-        let components: [CGFloat] = [1, 1, 1, 1, 123.0 / 255.0, 125.0 / 255.0, 132.0 / 255.0, 1]
-
-        UIGraphicsBeginImageContextWithOptions(CGSizeMake(320, 54), true, 0)
-
-        let context = UIGraphicsGetCurrentContext()
-        let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let gradient = CGGradientCreateWithColorComponents(colorSpace, components, nil, 2)
-
-        CGContextDrawLinearGradient(context, gradient, CGPointMake(0, 0), CGPointMake(0, 54),
-            .allZeros)
-
-        let viewImage = UIGraphicsGetImageFromCurrentImageContext()
-
-        UIGraphicsEndImageContext()
-
-        return viewImage
-    }
-
     private func setupToolbar() {
         if UI_USER_INTERFACE_IDIOM() == .Phone {
             self.toolbar = UIToolbar(frame: CGRectZero)
@@ -137,7 +119,8 @@ internal class WDImageCropViewController: UIViewController {
             info.sizeToFit()
 
             let cancel = UIBarButtonItem(customView: self.cancelButton)
-            let flex = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
+            let flex = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil,
+                action: nil)
             let label = UIBarButtonItem(customView: info)
             let use = UIBarButtonItem(customView: self.useButton)
 

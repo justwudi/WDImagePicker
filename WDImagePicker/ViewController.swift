@@ -25,22 +25,26 @@ class ViewController: UIViewController, WDImagePickerDelegate, UIImagePickerCont
         self.customCropButton = UIButton()
         self.customCropButton.frame = UI_USER_INTERFACE_IDIOM() == .Pad ?
             CGRectMake(20, 20, 220, 44) :
-            CGRectMake(20, CGRectGetMaxY(self.customCropButton.frame) + 20 , CGRectGetWidth(self.view.bounds) - 40, 44)
+            CGRectMake(20, CGRectGetMaxY(self.customCropButton.frame) + 20,
+                CGRectGetWidth(self.view.bounds) - 40, 44)
         self.customCropButton.setTitleColor(self.view.tintColor, forState: .Normal)
         self.customCropButton.setTitle("Custom Crop", forState: .Normal)
-        self.customCropButton.addTarget(self, action: "showPicker:", forControlEvents: .TouchUpInside)
+        self.customCropButton.addTarget(self, action: "showPicker:",
+            forControlEvents: .TouchUpInside)
         self.view.addSubview(self.customCropButton)
 
         self.normalCropButton = UIButton()
         self.normalCropButton.setTitleColor(self.view.tintColor, forState: .Normal)
         self.normalCropButton.setTitle("Apple's Build In Crop", forState: .Normal)
-        self.normalCropButton.addTarget(self, action: "showNormalPicker:", forControlEvents: .TouchUpInside)
+        self.normalCropButton.addTarget(self, action: "showNormalPicker:",
+            forControlEvents: .TouchUpInside)
         self.view.addSubview(self.normalCropButton)
 
         self.resizableButton = UIButton()
         self.resizableButton.setTitleColor(self.view.tintColor, forState: .Normal)
         self.resizableButton.setTitle("Resizable Custom Crop", forState: .Normal)
-        self.resizableButton.addTarget(self, action: "showResizablePicker:", forControlEvents: .TouchUpInside)
+        self.resizableButton.addTarget(self, action: "showResizablePicker:",
+            forControlEvents: .TouchUpInside)
         self.view.addSubview(self.resizableButton)
 
         self.imageView = UIImageView(frame: CGRectZero)
@@ -52,17 +56,21 @@ class ViewController: UIViewController, WDImagePickerDelegate, UIImagePickerCont
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
 
+        let width = CGRectGetWidth(self.view.bounds)
+        let height = CGRectGetHeight(self.view.bounds)
+
         self.normalCropButton.frame = UI_USER_INTERFACE_IDIOM() == .Pad ?
             CGRectMake(260, 20, 220, 44) :
-            CGRectMake(20, CGRectGetMaxY(self.customCropButton.frame) + 20 , CGRectGetWidth(self.view.bounds) - 40, 44)
+            CGRectMake(20, CGRectGetMaxY(self.customCropButton.frame) + 20, width - 40, 44)
 
         self.resizableButton.frame = UI_USER_INTERFACE_IDIOM() == .Pad ?
             CGRectMake(500, 20, 220, 44) :
-            CGRectMake(20, CGRectGetMaxY(self.normalCropButton.frame) + 20 , CGRectGetWidth(self.view.bounds) - 40, 44)
+            CGRectMake(20, CGRectGetMaxY(self.normalCropButton.frame) + 20, width - 40, 44)
 
         self.imageView.frame = UI_USER_INTERFACE_IDIOM() == .Pad ?
-            CGRectMake(20, 84, CGRectGetWidth(self.view.bounds) - 40, CGRectGetHeight(self.view.bounds) - 104) :
-            CGRectMake(20, CGRectGetMaxY(self.resizableButton.frame) + 20, CGRectGetWidth(self.view.bounds) - 40, CGRectGetHeight(self.view.bounds) - 20 - (CGRectGetMaxY(self.resizableButton.frame) + 20))
+            CGRectMake(20, 84, width - 40, CGRectGetHeight(self.view.bounds) - 104) :
+            CGRectMake(20, CGRectGetMaxY(self.resizableButton.frame) + 20, width - 40,
+                height - 20 - (CGRectGetMaxY(self.resizableButton.frame) + 20))
     }
 
     func showPicker(button: UIButton) {
@@ -71,10 +79,13 @@ class ViewController: UIViewController, WDImagePickerDelegate, UIImagePickerCont
         self.imagePicker.delegate = self
 
         if UI_USER_INTERFACE_IDIOM() == .Pad {
-            self.popoverController = UIPopoverController(contentViewController: self.imagePicker.imagePickerController)
-            self.popoverController.presentPopoverFromRect(button.frame, inView: self.view, permittedArrowDirections: .Any, animated: true)
+            self.popoverController = UIPopoverController(
+                contentViewController: self.imagePicker.imagePickerController)
+            self.popoverController.presentPopoverFromRect(button.frame, inView: self.view,
+                permittedArrowDirections: .Any, animated: true)
         } else {
-            self.presentViewController(self.imagePicker.imagePickerController, animated: true, completion: nil)
+            self.presentViewController(self.imagePicker.imagePickerController, animated: true,
+                completion: nil)
         }
     }
 
@@ -85,10 +96,13 @@ class ViewController: UIViewController, WDImagePickerDelegate, UIImagePickerCont
         self.imagePickerController.allowsEditing = true
 
         if UI_USER_INTERFACE_IDIOM() == .Pad {
-            self.popoverController = UIPopoverController(contentViewController: self.imagePickerController)
-            self.popoverController.presentPopoverFromRect(button.frame, inView: self.view, permittedArrowDirections: .Any, animated: true)
+            self.popoverController = UIPopoverController(
+                contentViewController: self.imagePickerController)
+            self.popoverController.presentPopoverFromRect(button.frame, inView: self.view,
+                permittedArrowDirections: .Any, animated: true)
         } else {
-            self.presentViewController(self.imagePickerController, animated: true, completion: nil)
+            self.presentViewController(self.imagePickerController, animated: true,
+                completion: nil)
         }
     }
 
@@ -99,10 +113,13 @@ class ViewController: UIViewController, WDImagePickerDelegate, UIImagePickerCont
         self.imagePicker.resizableCropArea = true
 
         if UI_USER_INTERFACE_IDIOM() == .Pad {
-            self.popoverController = UIPopoverController(contentViewController: self.imagePicker.imagePickerController)
-            self.popoverController.presentPopoverFromRect(button.frame, inView: self.view, permittedArrowDirections: .Any, animated: true)
+            self.popoverController = UIPopoverController(
+                contentViewController: self.imagePicker.imagePickerController)
+            self.popoverController.presentPopoverFromRect(button.frame, inView: self.view,
+                permittedArrowDirections: .Any, animated: true)
         } else {
-            self.presentViewController(self.imagePicker.imagePickerController, animated: true, completion: nil)
+            self.presentViewController(self.imagePicker.imagePickerController, animated: true,
+                completion: nil)
         }
     }
 
@@ -115,18 +132,20 @@ class ViewController: UIViewController, WDImagePickerDelegate, UIImagePickerCont
         if UI_USER_INTERFACE_IDIOM() == .Pad {
             self.popoverController.dismissPopoverAnimated(true)
         } else {
-            self.imagePicker.imagePickerController.dismissViewControllerAnimated(true, completion: nil)
+            self.imagePicker.imagePickerController.dismissViewControllerAnimated(true,
+                completion: nil)
         }
     }
 
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
-        self.imageView.image = image
+    func imagePickerController(picker: UIImagePickerController,
+        didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+            self.imageView.image = image
 
-        if UI_USER_INTERFACE_IDIOM() == .Pad {
-            self.popoverController.dismissPopoverAnimated(true)
-        } else {
-            picker.dismissViewControllerAnimated(true, completion: nil)
-        }
+            if UI_USER_INTERFACE_IDIOM() == .Pad {
+                self.popoverController.dismissPopoverAnimated(true)
+            } else {
+                picker.dismissViewControllerAnimated(true, completion: nil)
+            }
     }
 }
 
