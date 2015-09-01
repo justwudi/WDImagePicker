@@ -23,7 +23,7 @@ class ViewController: UIViewController, WDImagePickerDelegate, UIImagePickerCont
         super.viewDidLoad()
 
         self.customCropButton = UIButton()
-        self.customCropButton.frame = UI_USER_INTERFACE_IDIOM() == .Pad ?
+        self.customCropButton.frame = UIDevice.currentDevice().userInterfaceIdiom == .Pad ?
             CGRectMake(20, 20, 220, 44) :
             CGRectMake(20, CGRectGetMaxY(self.customCropButton.frame) + 20,
                 CGRectGetWidth(self.view.bounds) - 40, 44)
@@ -59,15 +59,15 @@ class ViewController: UIViewController, WDImagePickerDelegate, UIImagePickerCont
         let width = CGRectGetWidth(self.view.bounds)
         let height = CGRectGetHeight(self.view.bounds)
 
-        self.normalCropButton.frame = UI_USER_INTERFACE_IDIOM() == .Pad ?
+        self.normalCropButton.frame = UIDevice.currentDevice().userInterfaceIdiom == .Pad ?
             CGRectMake(260, 20, 220, 44) :
             CGRectMake(20, CGRectGetMaxY(self.customCropButton.frame) + 20, width - 40, 44)
 
-        self.resizableButton.frame = UI_USER_INTERFACE_IDIOM() == .Pad ?
+        self.resizableButton.frame = UIDevice.currentDevice().userInterfaceIdiom == .Pad ?
             CGRectMake(500, 20, 220, 44) :
             CGRectMake(20, CGRectGetMaxY(self.normalCropButton.frame) + 20, width - 40, 44)
 
-        self.imageView.frame = UI_USER_INTERFACE_IDIOM() == .Pad ?
+        self.imageView.frame = UIDevice.currentDevice().userInterfaceIdiom == .Pad ?
             CGRectMake(20, 84, width - 40, CGRectGetHeight(self.view.bounds) - 104) :
             CGRectMake(20, CGRectGetMaxY(self.resizableButton.frame) + 20, width - 40,
                 height - 20 - (CGRectGetMaxY(self.resizableButton.frame) + 20))
@@ -78,7 +78,7 @@ class ViewController: UIViewController, WDImagePickerDelegate, UIImagePickerCont
         self.imagePicker.cropSize = CGSizeMake(280, 280)
         self.imagePicker.delegate = self
 
-        if UI_USER_INTERFACE_IDIOM() == .Pad {
+        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
             self.popoverController = UIPopoverController(
                 contentViewController: self.imagePicker.imagePickerController)
             self.popoverController.presentPopoverFromRect(button.frame, inView: self.view,
@@ -95,7 +95,7 @@ class ViewController: UIViewController, WDImagePickerDelegate, UIImagePickerCont
         self.imagePickerController.delegate = self
         self.imagePickerController.allowsEditing = true
 
-        if UI_USER_INTERFACE_IDIOM() == .Pad {
+        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
             self.popoverController = UIPopoverController(
                 contentViewController: self.imagePickerController)
             self.popoverController.presentPopoverFromRect(button.frame, inView: self.view,
@@ -112,7 +112,7 @@ class ViewController: UIViewController, WDImagePickerDelegate, UIImagePickerCont
         self.imagePicker.delegate = self
         self.imagePicker.resizableCropArea = true
 
-        if UI_USER_INTERFACE_IDIOM() == .Pad {
+        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
             self.popoverController = UIPopoverController(
                 contentViewController: self.imagePicker.imagePickerController)
             self.popoverController.presentPopoverFromRect(button.frame, inView: self.view,
@@ -129,7 +129,7 @@ class ViewController: UIViewController, WDImagePickerDelegate, UIImagePickerCont
     }
 
     func hideImagePicker() {
-        if UI_USER_INTERFACE_IDIOM() == .Pad {
+        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
             self.popoverController.dismissPopoverAnimated(true)
         } else {
             self.imagePicker.imagePickerController.dismissViewControllerAnimated(true,
@@ -141,7 +141,7 @@ class ViewController: UIViewController, WDImagePickerDelegate, UIImagePickerCont
         didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
             self.imageView.image = image
 
-            if UI_USER_INTERFACE_IDIOM() == .Pad {
+            if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
                 self.popoverController.dismissPopoverAnimated(true)
             } else {
                 picker.dismissViewControllerAnimated(true, completion: nil)

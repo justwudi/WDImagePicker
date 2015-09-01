@@ -38,7 +38,7 @@ internal class WDImageCropViewController: UIViewController {
         self.setupCropView()
         self.setupToolbar()
 
-        if UI_USER_INTERFACE_IDIOM() == .Phone {
+        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
             self.navigationController?.navigationBarHidden = true
         } else {
             self.navigationController?.navigationBarHidden = false
@@ -100,7 +100,7 @@ internal class WDImageCropViewController: UIViewController {
     }
 
     private func setupToolbar() {
-        if UI_USER_INTERFACE_IDIOM() == .Phone {
+        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
             self.toolbar = UIToolbar(frame: CGRectZero)
             self.toolbar.translucent = true
             self.toolbar.barStyle = .Black
