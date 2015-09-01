@@ -145,7 +145,7 @@ internal class WDImageCropView: UIView, UIScrollViewDelegate {
         super.layoutSubviews()
 
         var size = self.cropSize;
-        let toolbarSize = CGFloat(UI_USER_INTERFACE_IDIOM() == .Pad ? 0 : 54)
+        let toolbarSize = CGFloat(UIDevice.currentDevice().userInterfaceIdiom == .Pad ? 0 : 54)
         self.xOffset = floor((CGRectGetWidth(self.bounds) - size.width) * 0.5)
         self.yOffset = floor((CGRectGetHeight(self.bounds) - toolbarSize - size.height) * 0.5)
 

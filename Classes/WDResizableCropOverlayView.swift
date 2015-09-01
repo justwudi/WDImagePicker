@@ -28,8 +28,13 @@ internal class WDResizableCropOverlayView: WDImageCropOverlayView {
     private var resizeMultiplyer = WDResizableViewBorderMultiplyer()
 
     override var frame: CGRect {
-        didSet {
-            let toolbarSize = CGFloat(UI_USER_INTERFACE_IDIOM() == .Pad ? 0 : 54)
+        get {
+            return super.frame
+        }
+        set {
+            super.frame = newValue
+
+            let toolbarSize = CGFloat(UIDevice.currentDevice().userInterfaceIdiom == .Pad ? 0 : 54)
             let width = self.bounds.size.width
             let height = self.bounds.size.height
 
@@ -92,7 +97,7 @@ internal class WDResizableCropOverlayView: WDImageCropOverlayView {
     }
 
     private func addContentViews() {
-        let toolbarSize = CGFloat(UI_USER_INTERFACE_IDIOM() == .Pad ? 0 : 54)
+        let toolbarSize = CGFloat(UIDevice.currentDevice().userInterfaceIdiom == .Pad ? 0 : 54)
         let width = self.bounds.size.width
         let height = self.bounds.size.height
 
@@ -181,7 +186,7 @@ internal class WDResizableCropOverlayView: WDImageCropOverlayView {
     }
 
     private func preventBorderFrameFromGettingTooSmallOrTooBig(frame: CGRect) -> CGRect {
-        let toolbarSize = CGFloat(UI_USER_INTERFACE_IDIOM() == .Pad ? 0 : 54)
+        let toolbarSize = CGFloat(UIDevice.currentDevice().userInterfaceIdiom == .Pad ? 0 : 54)
         var newFrame = frame
 
         if newFrame.size.width < 64 {
