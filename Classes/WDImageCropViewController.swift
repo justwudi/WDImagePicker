@@ -63,9 +63,9 @@ internal class WDImageCropViewController: UIViewController {
 
     private func setupNavigationBar() {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel,
-            target: self, action: "actionCancel:")
+                                                                target: self, action: #selector(actionCancel))
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Use", style: .Plain,
-            target: self, action: "actionUse:")
+            target: self, action: #selector(actionUse))
     }
 
     private func setupCropView() {
@@ -84,7 +84,7 @@ internal class WDImageCropViewController: UIViewController {
         self.cancelButton.setTitle("Cancel", forState: .Normal)
         self.cancelButton.setTitleShadowColor(
             UIColor(red: 0.118, green: 0.247, blue: 0.455, alpha: 1), forState: .Normal)
-        self.cancelButton.addTarget(self, action: "actionCancel:", forControlEvents: .TouchUpInside)
+        self.cancelButton.addTarget(self, action: #selector(actionCancel), forControlEvents: .TouchUpInside)
     }
 
     private func setupUseButton() {
@@ -95,7 +95,7 @@ internal class WDImageCropViewController: UIViewController {
         self.useButton.setTitle("Use", forState: .Normal)
         self.useButton.setTitleShadowColor(
             UIColor(red: 0.118, green: 0.247, blue: 0.455, alpha: 1), forState: .Normal)
-        self.useButton.addTarget(self, action: "actionUse:", forControlEvents: .TouchUpInside)
+        self.useButton.addTarget(self, action: #selector(actionUse), forControlEvents: .TouchUpInside)
     }
 
     private func toolbarBackgroundImage() -> UIImage {
@@ -107,8 +107,7 @@ internal class WDImageCropViewController: UIViewController {
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         let gradient = CGGradientCreateWithColorComponents(colorSpace, components, nil, 2)
 
-        CGContextDrawLinearGradient(context, gradient, CGPointMake(0, 0), CGPointMake(0, 54),
-            .allZeros)
+        CGContextDrawLinearGradient(context, gradient, CGPointMake(0, 0), CGPointMake(0, 54), [])
 
         let viewImage = UIGraphicsGetImageFromCurrentImageContext()
 
