@@ -182,6 +182,8 @@
 		764FD5791B8F01C100BE5F46 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0730;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = "Wu Di";
 				TargetAttributes = {
@@ -443,6 +445,7 @@
 				764FD5A21B8F01C100BE5F46 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		764FD5A31B8F01C100BE5F46 /* Build configuration list for PBXNativeTarget "WDImagePickerTests" */ = {
 			isa = XCConfigurationList;
@@ -451,6 +454,7 @@
 				764FD5A51B8F01C100BE5F46 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
