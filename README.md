@@ -9,7 +9,7 @@ Ever wanted a custom crop area for the UIImagePickerController? Now you can have
 ```ruby
 use_frameworks!
 
-pod 'WDImagePicker', :git => 'https://github.com/justwudi/WDImagePicker.git', :tag => '0.1.1'
+pod 'WDImagePicker', :git => 'https://github.com/justwudi/WDImagePicker.git', :tag => '0.2.2'
 ```
 and run `pod install`
 
@@ -17,7 +17,7 @@ and run `pod install`
 
 - just drag and drop the files in under "Classes" into your project.
 - look at the sample code below.
-- this project contains a sample project as well, just have a look at the implementation of `ViewController.swift` 
+- this project contains a sample project as well, just have a look at the implementation of `ViewController.swift`
 
 ### Sample Code
 
@@ -25,7 +25,7 @@ and run `pod install`
 self.imagePicker = WDImagePicker()
 self.imagePicker.cropSize = CGSizeMake(280, 90)
 self.imagePicker.delegate = self
-  
+
 self.presentViewController(self.imagePicker.imagePickerController, animated: true, completion: nil)
 ```
 
@@ -34,15 +34,17 @@ This code results into the following controller + crop area:
 ![Sample Crop Image](https://raw.githubusercontent.com/justwudi/WDImagePicker/master/screenshot1.png)
 
 It's even possible to let the user adjust the crop area by setting one additional property:
-  
+
 ```swift
 self.imagePicker.resizeableCropArea = true
 ```
+
 This code results into the following controller + adjustable crop area:
+
 ![Sample Crop Image Adjustable](https://raw.githubusercontent.com/justwudi/WDImagePicker/master/screenshot2.png)
+
 ### License
 Under MIT. See license file for details.
 
 
 
-    
