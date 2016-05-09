@@ -28,19 +28,19 @@ class ViewController: UIViewController, WDImagePickerDelegate, UIImagePickerCont
             CGRectMake(20, CGRectGetMaxY(self.customCropButton.frame) + 20 , CGRectGetWidth(self.view.bounds) - 40, 44)
         self.customCropButton.setTitleColor(self.view.tintColor, forState: .Normal)
         self.customCropButton.setTitle("Custom Crop", forState: .Normal)
-        self.customCropButton.addTarget(self, action: "showPicker:", forControlEvents: .TouchUpInside)
+        self.customCropButton.addTarget(self, action: #selector(ViewController.showPicker(_:)), forControlEvents: .TouchUpInside)
         self.view.addSubview(self.customCropButton)
 
         self.normalCropButton = UIButton()
         self.normalCropButton.setTitleColor(self.view.tintColor, forState: .Normal)
         self.normalCropButton.setTitle("Apple's Build In Crop", forState: .Normal)
-        self.normalCropButton.addTarget(self, action: "showNormalPicker:", forControlEvents: .TouchUpInside)
+        self.normalCropButton.addTarget(self, action: #selector(ViewController.showNormalPicker(_:)), forControlEvents: .TouchUpInside)
         self.view.addSubview(self.normalCropButton)
 
         self.resizableButton = UIButton()
         self.resizableButton.setTitleColor(self.view.tintColor, forState: .Normal)
         self.resizableButton.setTitle("Resizable Custom Crop", forState: .Normal)
-        self.resizableButton.addTarget(self, action: "showResizablePicker:", forControlEvents: .TouchUpInside)
+        self.resizableButton.addTarget(self, action: #selector(ViewController.showResizablePicker(_:)), forControlEvents: .TouchUpInside)
         self.view.addSubview(self.resizableButton)
 
         self.imageView = UIImageView(frame: CGRectZero)
